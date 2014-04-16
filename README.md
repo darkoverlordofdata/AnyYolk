@@ -2,6 +2,14 @@
 
 AnyYolk is a fun HTML5 game powered by [Parse](https://parse.com). The game uses CSS 3 animations and the highscore is submitted via facebook authentication and stored on Parse. You can check out the live version on the [AnyYolk website](https://anyyolk.com).
 
+## Modified template structure
+
+1. Moved web page to cloudCode/public
+2. Replaced local libs with http://www.cdnjs.com/
+3. Compile src/main.coffee to cloudCode/public/js/app.min.js
+4. Moved javascript to bottom of index.html
+5. Local node.js server for testing
+
 ## Setup
 
 ### Web Setup

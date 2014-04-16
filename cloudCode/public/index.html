@@ -23,48 +23,11 @@
     <link rel="apple-touch-startup-image" href="assets/splash_1136.png" media="(device-height: 568px)">
     <link rel="apple-touch-startup-image" href="assets/splash@2x.png" media="(device-height: 480px)">
 
-    <!-- Libraries -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/underscore.js"></script>
-    <script type="text/javascript" src="js/backbone.js"></script>
-    <script type="text/javascript" src="js/spin.min.js"></script>
-    <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.2.7.min.js"></script>
-
-    <!-- App code -->
-    <script type="text/javascript" src="js/main.js"></script>
   </head>
 
   <body>
     <!-- Facebook integration -->
     <div id="fb-root"></div>
-    <script>
-      //***********************************************************
-      // Be sure to add your Parse Keys and Facebook App ID Below!
-      //***********************************************************
-
-      // Initialize Parse
-      Parse.initialize("YOUR_APP_ID", "YOUR_JAVASCRIPT_KEY");
-
-      // Initialize the Facebook SDK with Parse as described at 
-      // https://parse.com/docs/js_guide#fbusers
-      window.fbAsyncInit = function() {
-        // init the FB JS SDK
-        Parse.FacebookUtils.init({
-          appId      : 'YOUR_FACEBOOK_APP_ID', // Facebook App ID
-          channelUrl : '//www.anyyolk.com/channel.html', // Channel File
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow Parse to access the session
-          xfbml      : true  // parse XFBML
-        });
-      };
-      (function(d, debug){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-         ref.parentNode.insertBefore(js, ref);
-       }(document, /*debug*/ false));
-    </script>
 
     <!-- This is the game! -->
     <div id="stage" class="">
@@ -195,6 +158,14 @@
       </div>
       <div class="menu_item back_button">BACK</div>    
     </script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/spin.js/1.2.7/spin.min.js"></script>
+    <script type="text/javascript" src="//www.parsecdn.com/js/parse-1.2.7.min.js"></script>
+    <script type="text/javascript" src="js/app.min.js"></script>
+
   </body>
 
 </html>
