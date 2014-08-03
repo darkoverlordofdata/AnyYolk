@@ -1,0 +1,12 @@
+<% var sizeClass = $(window).width() > 550 ? "" : "small"; %>
+<div class="summary <%= sizeClass %>">
+  <h2 class="title">You saved</h2>
+  <div class="end_score">
+    <span class="score"><%= score %></span>
+    <span class="label">eggs</span>
+  </div>
+  <h2 class="message"><%= congrats %></h2>
+  <div class="facebook_button active"><img class="fb_content" src="assets/facebook_icon.png"/><span class="fb_content">Submit score</span></div>
+</div>
+<div class="menu_item menu_button <%= sizeClass %>">MENU</div>
+<div class="menu_item replay_button <%= sizeClass %>">RETRY</div>

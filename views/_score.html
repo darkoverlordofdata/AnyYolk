@@ -1,0 +1,7 @@
+<% var dateString = (score.createdAt.getMonth()+1) + "/" + score.createdAt.getDate() + "/" + score.createdAt.getFullYear(); %>
+  <tr height="20">
+    <td class="rank"><%= index+1 %></td>
+    <td class="name"><%= score.get("player").get("displayName") %></td>
+    <td class="score"><%= score.get("score") %></td>
+    <td class="date"><%= dateString %></td>
+  </tr>
