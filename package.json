@@ -29,7 +29,9 @@
         "coffee-script": "~1.7.1",
         "express": "~3.4.8"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "q": "*"
+    },
     "bundleDependencies": [],
     "private": true,
     "main": "index.js"

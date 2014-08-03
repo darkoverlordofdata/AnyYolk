@@ -932,7 +932,7 @@ body {
 /* line 396, ../sass/screen.scss */
 #stage .tile {
   width: 100%;
-  background: url(/assets/tiles.png) repeat-x;
+  background: url(../assets/tiles.png) repeat-x;
   height: 160px;
   position: absolute;
   bottom: 0px;
@@ -968,7 +968,7 @@ body {
 #stage .cloud {
   width: 200px;
   position: absolute;
-  background: url(/assets/cloud.png) no-repeat;
+  background: url(../assets/cloud.png) no-repeat;
   background-size: contain;
   height: 110px;
   opacity: 0.9;
@@ -1001,7 +1001,7 @@ body {
   max-width: 500px;
   width: 90%;
   height: 175px;
-  background: url(/assets/Logo.png) no-repeat;
+  background: url(../assets/Logo.png) no-repeat;
   background-size: 100%;
   background-size: contain !important;
   z-index: 9;
@@ -1010,7 +1010,7 @@ body {
 @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
   /* line 451, ../sass/screen.scss */
   #stage .menu_scene .title {
-    background-image: url("/assets/Logo@2x.png");
+    background-image: url("../assets/Logo@2x.png");
     background-size: 500px 175px;
   }
 }
@@ -1258,7 +1258,7 @@ body {
 #stage .game_scene .egg {
   width: 70px;
   height: 100px;
-  background: url(/assets/egg_regular.png) no-repeat;
+  background: url(../assets/egg_regular.png) no-repeat;
   background-size: contain;
   position: absolute;
   top: -100px;
@@ -1267,7 +1267,7 @@ body {
 @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
   /* line 591, ../sass/screen.scss */
   #stage .game_scene .egg {
-    background-image: url("/assets/egg_regular@2x.png");
+    background-image: url("../assets/egg_regular@2x.png");
     background-size: 70px 100px;
   }
 }
@@ -1277,7 +1277,7 @@ body {
 }
 /* line 606, ../sass/screen.scss */
 #stage .game_scene .egg.cracked {
-  background-image: url(/assets/egg_cracked.png);
+  background-image: url(../assets/egg_cracked.png);
   background-size: contain;
   height: 112px;
   -webkit-transform: rotate(-85deg);
@@ -1287,7 +1287,7 @@ body {
 @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
   /* line 606, ../sass/screen.scss */
   #stage .game_scene .egg.cracked {
-    background-image: url("/assets/egg_cracked@2x.png");
+    background-image: url("../assets/egg_cracked@2x.png");
     background-size: 70px 100px;
   }
 }
@@ -1297,7 +1297,7 @@ body {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   transform: rotate(0deg);
-  background-image: url(/assets/egg_opened.png);
+  background-image: url(../assets/egg_opened.png);
   width: 155px;
   height: 120px;
   margin-left: -50px;
@@ -1306,7 +1306,7 @@ body {
 @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
   /* line 616, ../sass/screen.scss */
   #stage .game_scene .egg.broken {
-    background-image: url("/assets/egg_opened@2x.png");
+    background-image: url("../assets/egg_opened@2x.png");
     background-size: 155px 120px;
   }
 }
@@ -1927,7 +1927,7 @@ body {
 }
 /* line 969, ../sass/screen.scss */
 #stage .credits_scene .credits .tutorial .icon {
-  background: url(/assets/apple-touch-icon-144x144-precomposed.png) no-repeat;
+  background: url(../assets/apple-touch-icon-144x144-precomposed.png) no-repeat;
   background-size: contain;
   width: 80px;
   height: 80px;

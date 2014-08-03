@@ -20,7 +20,7 @@ util = require 'util'
 # Build Source
 #
 #
-task 'build:src', 'Build the coffee app', ->
+task 'build', 'Build the coffee app', ->
 
   if not fs.existsSync('tmp/') then fs.mkdirSync('tmp')
   if not fs.existsSync('cloudCode/public/js/') then fs.mkdirSync('cloudCode/public/js')
