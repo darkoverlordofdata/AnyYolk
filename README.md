@@ -9,6 +9,7 @@ AnyYolk is a fun HTML5 game powered by [Parse](https://parse.com). The game uses
 3. Compile src/main.coffee to cloudCode/public/js/app.min.js
 4. Moved javascript to bottom of index.html
 5. Local node.js server for testing
+6. Published to [gh-page] (http://darkoverlordofdata.github.io/AnyYolk.)
 
 ## Setup
 
