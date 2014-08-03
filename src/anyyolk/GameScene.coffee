@@ -7,19 +7,19 @@ anyyolk = require('../anyyolk')
 # Scene for the game itself, displayed when "Play" is clicked 
 class anyyolk.GameScene extends Backbone.View
 
-  className: "game_scene"
+  className       : "game_scene"
+  scoreTemplate   : _.template($("#_game_score").html())
+  levelTemplate   : _.template($("#_game_level").html())
+  livesTemplate   : _.template($("#_game_lives").html())
+  sceneName       : "game"
   events:
-    animationend: "cleanUp"
-    webkitAnimationEnd: "cleanUp"
-    mozAnimationEnd: "cleanUp"
-
-  scoreTemplate: _.template($("#_game_score").html())
-  levelTemplate: _.template($("#_game_level").html())
-  livesTemplate: _.template($("#_game_lives").html())
-  sceneName: "game"
+    animationend          : "cleanUp"
+    webkitAnimationEnd    : "cleanUp"
+    mozAnimationEnd       : "cleanUp"
+    
   initialize: =>
     @eggViews = []
-    @$el.on Utils.clickUpOrTouch(), ".back_button", @handleBackButton
+    @$el.on anyyolk.clickUpOrTouch(), ".back_button", @handleBackButton
     @model.on "change:scene", @renderSceneChange
     @model.get("eggCollection").on "add", @renderAddEgg
     @model.on "change:score", @renderScore
@@ -115,9 +115,9 @@ class anyyolk.GameScene extends Backbone.View
   renderRemoveScene: =>
 
     # Animate the HUD dissapearing
-    @$(".back_button").css Utils.bp() + "animation-name", "xRaise"
-    @$("#hud p").css Utils.bp() + "animation-name", "removeHUD"
-    @$(".egg").css Utils.bp() + "transition-duration", "0.3s"
+    @$(".back_button").css anyyolk.bp() + "animation-name", "xRaise"
+    @$("#hud p").css anyyolk.bp() + "animation-name", "removeHUD"
+    @$(".egg").css anyyolk.bp() + "transition-duration", "0.3s"
 
     # Remove all egg views and their models
     _.each @eggViews, (eggView) =>

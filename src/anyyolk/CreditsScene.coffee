@@ -8,17 +8,17 @@ anyyolk = require('../anyyolk')
 # Scene for the credits, accessed from the menu button 
 class anyyolk.CreditsScene extends Backbone.View
 
-  className: "credits_scene"
-  template: _.template($("#_credits").html())
-  sceneName: "credits"
+  className   : "credits_scene"
+  template    : _.template($("#_credits").html())
+  sceneName   : "credits"
   events:
-    animationend: "cleanUp"
-    webkitAnimationEnd: "cleanUp"
-    mozAnimationEnd: "cleanUp"
+    animationend        : "cleanUp"
+    webkitAnimationEnd  : "cleanUp"
+    mozAnimationEnd     : "cleanUp"
 
   initialize: =>
     @model.on "change:scene", @renderSceneChange
-    @$el.on Utils.clickUpOrTouch(), ".back_button", @handleBackButton
+    @$el.on anyyolk.clickUpOrTouch(), ".back_button", @handleBackButton
 
   handleBackButton: (e) =>
     @$(".back_button").addClass "disabled"
@@ -47,8 +47,8 @@ class anyyolk.CreditsScene extends Backbone.View
     @$(".back_button").addClass "removal"
 
     # Bind removal animations
-    @$(".credits").css Utils.bp() + "animation-name", "raiseMenu"
-    @$(".back_button").css Utils.bp() + "animation-name", "raiseMenu"
+    @$(".credits").css anyyolk.bp() + "animation-name", "raiseMenu"
+    @$(".back_button").css anyyolk.bp() + "animation-name", "raiseMenu"
 
   cleanUp: (e) =>
     @$el.empty()  if @model.get("scene") isnt @sceneName and $(e.target).hasClass("credits")

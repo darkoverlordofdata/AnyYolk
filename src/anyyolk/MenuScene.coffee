@@ -7,21 +7,21 @@ anyyolk = require('../anyyolk')
 # Scene for the main menu displayed on launch 
 class anyyolk.MenuScene extends Backbone.View
 
-  className: "menu_scene"
+  className   : "menu_scene"
+  template    : _.template($("#_menu").html())
+  sceneName   : "menu" # name used to show/hide scene
   events:
-    "animationend .title": "cleanUp"
-    "webkitAnimationEnd .title": "cleanUp"
-    "mozAnimationEnd .title": "cleanUp"
+    "animationend .title"         : "cleanUp"
+    "webkitAnimationEnd .title"   : "cleanUp"
+    "mozAnimationEnd .title"      : "cleanUp"
 
-  template: _.template($("#_menu").html())
-  sceneName: "menu" # name used to show/hide scene
   initialize: =>
     @model.on "change:scene", @renderSceneChange # show/hide scene based on sceneName
 
     # Add click or touch event depending on device
-    @$el.on Utils.clickUpOrTouch(), "#play_button", @handlePlayButton
-    @$el.on Utils.clickUpOrTouch(), "#highscore_button", @handleHighscoreButton
-    @$el.on Utils.clickUpOrTouch(), "#credits_button", @handleCreditsButton
+    @$el.on anyyolk.clickUpOrTouch(), "#play_button", @handlePlayButton
+    @$el.on anyyolk.clickUpOrTouch(), "#highscore_button", @handleHighscoreButton
+    @$el.on anyyolk.clickUpOrTouch(), "#credits_button", @handleCreditsButton
     this
 
 
@@ -69,8 +69,8 @@ class anyyolk.MenuScene extends Backbone.View
     @$(".menu_item").addClass "removal"
 
     # Bind removal animations
-    @$(".title").css Utils.bp() + "animation-name", "raiseTitle"
-    @$(".menu_item").css Utils.bp() + "animation-name", "raiseMenu"
+    @$(".title").css anyyolk.bp() + "animation-name", "raiseTitle"
+    @$(".menu_item").css anyyolk.bp() + "animation-name", "raiseMenu"
     this
 
 

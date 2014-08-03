@@ -6,13 +6,11 @@ anyyolk = require('../anyyolk')
 
 class anyyolk.Stage extends Backbone.View
 
-  el: "#stage"
-
-  # Templates
-  tileTemplate:   _.template($("#_tile_pair").html())
-  treeTemplate:   _.template($("#_tree").html())
-  sunTemplate:    _.template($("#_sun").html())
-  cloudTemplate:  _.template($("#_cloud").html())
+  el              : "#stage"
+  tileTemplate    : _.template($("#_tile_pair").html())
+  treeTemplate    : _.template($("#_tree").html())
+  sunTemplate     : _.template($("#_sun").html())
+  cloudTemplate   : _.template($("#_cloud").html())
 
 
   # The render function delegates to a render function for each "element" 
@@ -43,23 +41,23 @@ class anyyolk.Stage extends Backbone.View
 
     # for small screens we place two trees manually
     if numTrees <= 2
-      @$el.append @treeTemplate(
-        treeNum: 3
-        leftValue: -100
-      )
-      @$el.append @treeTemplate(
-        treeNum: 1
-        leftValue: 120
-      )
+      @$el.append @treeTemplate
+        treeNum     : 3
+        leftValue   : -100
+      
+      @$el.append @treeTemplate
+        treeNum     : 1
+        leftValue   : 120
+      
     else
       i = 0
 
       while i < numTrees
         left = Math.random() * (200) + i * 200
-        @$el.append @treeTemplate( # -1 for treeNum tells the template to randomize
-          treeNum: -1
-          leftValue: left - 300
-        )
+        @$el.append @treeTemplate # -1 for treeNum tells the template to randomize
+          treeNum     : -1
+          leftValue   : left - 300
+        
         i++
 
 
@@ -74,10 +72,11 @@ class anyyolk.Stage extends Backbone.View
       delay = Math.random() * 8 - 4 + (10 * i) # each cloud is spaced apart by 6-14s
       speed = 20 # in px/s
       dir = (if Math.floor(Math.random() * 2) < 1 then "left" else "right")
-      @$el.append @cloudTemplate(
-        delay: delay
-        direction: dir
-        duration: $(window).width() / speed
-        topValue: top
-      )
+      @$el.append @cloudTemplate
+        bp          : anyyolk.bp
+        delay       : delay
+        direction   : dir
+        duration    : $(window).width() / speed
+        topValue    : top
+      
       i++

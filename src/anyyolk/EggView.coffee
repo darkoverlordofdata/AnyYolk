@@ -6,19 +6,19 @@ anyyolk = require('../anyyolk')
 
 class anyyolk.EggView extends Backbone.View
 
-  className: "egg"
-  spriteClass: ".egg_sprite_"
-  eggTemplate: _.template($("#_egg").html())
-  scene: null # The scene the egg view is on
+  className     : "egg"
+  spriteClass   : ".egg_sprite_"
+  eggTemplate   : _.template($("#_egg").html())
+  scene         : null # The scene the egg view is on
   events:
-    webkitTransitionEnd: "handleTransitionEnded"
-    mozTransitionEnd: "handleTransitionEnded"
-    transitionend: "handleTransitionEnded"
+    webkitTransitionEnd   : "handleTransitionEnded"
+    mozTransitionEnd      : "handleTransitionEnded"
+    transitionend         : "handleTransitionEnded"
 
   initialize: =>
     @scene = @options.scene
     @gameState = @options.gameState
-    @$el.on Utils.clickDownOrTouch(), @nextSprite
+    @$el.on anyyolk.clickDownOrTouch(), @nextSprite
     @model.on "change:spriteIndex", @renderSprites
     @model.on "fly", @renderFlying
     @model.on "break", @renderBreaking
@@ -47,15 +47,15 @@ class anyyolk.EggView extends Backbone.View
     speed = 100 * @gameState.get("speedX") + Math.random() * 100 - 50 # in px/s, 100*multiplier +-50
     left = Math.random() * ($(window).width() - 100) + 30 # keep egg completely in window
     top = $("#stage").height() - 220 # keep egg just above screen
-    @$el.css Utils.bp() + "transition-delay", delay + "s"
-    @$el.css Utils.bp() + "transition-duration", $(window).height() / speed + "s"
-    @$el.css Utils.bp() + "transition-property", "top opacity"
-    @$el.css Utils.bp() + "transition-timing-function", "linear"
+    @$el.css anyyolk.bp() + "transition-delay", delay + "s"
+    @$el.css anyyolk.bp() + "transition-duration", $(window).height() / speed + "s"
+    @$el.css anyyolk.bp() + "transition-property", "top opacity"
+    @$el.css anyyolk.bp() + "transition-timing-function", "linear"
     @$el.css "left", left + "px"
     @scene.append @$el
 
     # Start animation
-    Utils.nextTick =>
+    anyyolk.nextTick =>
       @$el.css "top", top + "px"
 
 
@@ -68,27 +68,27 @@ class anyyolk.EggView extends Backbone.View
   # Render the breaking state (animation of egg rolling sideways) 
   renderBreaking: =>
     @$el.addClass("cracked").addClass "disabled"
-    @$el.css Utils.bp() + "transition-delay", "0s"
-    @$el.css Utils.bp() + "transition-duration", "0.2s"
+    @$el.css anyyolk.bp() + "transition-delay", "0s"
+    @$el.css anyyolk.bp() + "transition-duration", "0.2s"
 
 
   # Render the broken state. Changes the image and fades out the egg 
   renderHidding: =>
     @$el.addClass "broken"
-    @$el.css Utils.bp() + "transition-delay", "1s"
-    @$el.css Utils.bp() + "transition-duration", "0.5s"
-    @$el.css Utils.bp() + "transition-property", "opacity"
-    @$el.css Utils.bp() + "transition-timing-function", "linear"
+    @$el.css anyyolk.bp() + "transition-delay", "1s"
+    @$el.css anyyolk.bp() + "transition-duration", "0.5s"
+    @$el.css anyyolk.bp() + "transition-property", "opacity"
+    @$el.css anyyolk.bp() + "transition-timing-function", "linear"
     @$el.css "opacity", 0
 
 
   # Render the flying state when the egg was clicked enough times 
   renderFlying: =>
     @$el.addClass "flying"
-    @$el.css Utils.bp() + "transition-delay", "0s"
-    @$el.css Utils.bp() + "transition-duration", "1s"
-    @$el.css Utils.bp() + "transition-property", "top"
-    @$el.css Utils.bp() + "transition-timing-function", "linear"
+    @$el.css anyyolk.bp() + "transition-delay", "0s"
+    @$el.css anyyolk.bp() + "transition-duration", "1s"
+    @$el.css anyyolk.bp() + "transition-property", "top"
+    @$el.css anyyolk.bp() + "transition-timing-function", "linear"
 
 
   # Remove this view from the DOM 
@@ -105,6 +105,6 @@ class anyyolk.EggView extends Backbone.View
     else if e.originalEvent.propertyName is "top" # falling completed
       @model.eggHitGround()
     # breaking completed
-    else @renderHidding()  if e.originalEvent.propertyName is Utils.bp() + "transform" or "transform"
+    else @renderHidding()  if e.originalEvent.propertyName is anyyolk.bp() + "transform" or "transform"
     false
 

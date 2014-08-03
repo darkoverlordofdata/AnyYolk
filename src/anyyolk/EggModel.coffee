@@ -11,8 +11,8 @@ class anyyolk.EggModel extends Backbone.Model
 
 
   defaults:
-    spriteIndex: 1
-    collectionIndex: 0
+    spriteIndex       : 1
+    collectionIndex   : 0
 
   # Increases the .png index to show the new sprite image 
   nextSprite: =>

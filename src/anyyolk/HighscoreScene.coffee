@@ -9,19 +9,19 @@ anyyolk = require('../anyyolk')
 # Scene for the highscore, accessed from the menu button 
 class anyyolk.HighscoreScene extends Backbone.View
 
-  className: "highscore_scene"
+  className       : "highscore_scene"
+  template        : _.template($("#_highscore").html())
+  scoreTemplate   : _.template($("#_score").html())
+  sceneName       : "highscore"
   events:
-    animationend: "cleanUp"
-    webkitAnimationEnd: "cleanUp"
-    mozAnimationEnd: "cleanUp"
+    animationend          : "cleanUp"
+    webkitAnimationEnd    : "cleanUp"
+    mozAnimationEnd       : "cleanUp"
 
-  template: _.template($("#_highscore").html())
-  scoreTemplate: _.template($("#_score").html())
-  sceneName: "highscore"
   initialize: =>
     @model.on "change:scene", @renderSceneChange
     @model.get("highscoreCollection").on "reset", @renderScoreCollection
-    @$el.on Utils.clickUpOrTouch(), ".back_button", @handleBackButton
+    @$el.on anyyolk.clickUpOrTouch(), ".back_button", @handleBackButton
     @render()  if @model.get("currentScene") is @sceneName
 
   handleBackButton: (e) =>
@@ -76,8 +76,8 @@ class anyyolk.HighscoreScene extends Backbone.View
     @$(".highscore").addClass "removal"
 
     # Bind removal animations
-    @$(".menu_item").css Utils.bp() + "animation-name", "raiseMenu"
-    @$(".highscore").css Utils.bp() + "animation-name", "raiseScores"
+    @$(".menu_item").css anyyolk.bp() + "animation-name", "raiseMenu"
+    @$(".highscore").css anyyolk.bp() + "animation-name", "raiseScores"
 
   cleanUp: (e) =>
     @$el.empty()  if @model.get("scene") isnt @sceneName and $(e.target).hasClass("highscore")

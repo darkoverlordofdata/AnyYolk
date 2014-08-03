@@ -22,20 +22,20 @@ class anyyolk.GameOverScene extends Backbone.View
     "Monstrous!!"
   ]
 
-  className: "game_over_scene"
+  className   : "game_over_scene"
+  template    : _.template($("#_game_over").html())
+  sceneName   : "game_over"
+  submitted   : false
   events:
-    animationend: "cleanUp"
-    webkitAnimationEnd: "cleanUp"
-    mozAnimationEnd: "cleanUp"
+    animationend          : "cleanUp"
+    webkitAnimationEnd    : "cleanUp"
+    mozAnimationEnd       : "cleanUp"
 
-  template: _.template($("#_game_over").html())
-  sceneName: "game_over"
-  submitted: false
   initialize: =>
     @model.on "change:scene", @renderSceneChange
-    @$el.on Utils.clickUpOrTouch(), ".menu_button", @handleMenuButton
-    @$el.on Utils.clickUpOrTouch(), ".replay_button", @handleReplayButton
-    @$el.on Utils.clickUpOrTouch(), ".facebook_button", @handleFacebookButton
+    @$el.on anyyolk.clickUpOrTouch(), ".menu_button", @handleMenuButton
+    @$el.on anyyolk.clickUpOrTouch(), ".replay_button", @handleReplayButton
+    @$el.on anyyolk.clickUpOrTouch(), ".facebook_button", @handleFacebookButton
 
   handleMenuButton: (e) =>
     @$(".menu_item").addClass "disabled"
@@ -57,7 +57,7 @@ class anyyolk.GameOverScene extends Backbone.View
     if Parse.User.current()
       @saveHighScore()
     else
-      Parse.FacebookUtils.logIn null,
+      Parse.Facebookanyyolk.logIn null,
         success: (user) =>
 
           # If it's a new user, let's fetch their name from FB
@@ -130,8 +130,8 @@ class anyyolk.GameOverScene extends Backbone.View
     @$(".summary").addClass "removal"
 
     # Bind removal animations
-    @$(".menu_item").css Utils.bp() + "animation-name", "raiseMenu"
-    @$(".summary").css Utils.bp() + "animation-name", "raiseScores"
+    @$(".menu_item").css anyyolk.bp() + "animation-name", "raiseMenu"
+    @$(".summary").css anyyolk.bp() + "animation-name", "raiseScores"
 
   cleanUp: (e) =>
     @$el.empty()  if @model.get("scene") isnt @sceneName and $(e.target).hasClass("summary")

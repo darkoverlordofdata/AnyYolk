@@ -8,15 +8,15 @@ anyyolk = require('../anyyolk')
 class anyyolk.GameState extends Backbone.Model
   # The default game data used for a new game 
   @DefaultGameData =
-    score: 0
-    lives: 3
-    level: 1
-    speedX: 1
+    score     : 0
+    lives     : 3
+    level     : 1
+    speedX    : 1
 
   defaults:
-    scene: ""
-    eggCollection: null
-    speedX: 1
+    scene           : ""
+    eggCollection   : null
+    speedX          : 1
 
   initialize: =>
 
