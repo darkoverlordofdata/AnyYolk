@@ -9,7 +9,6 @@ anyyolk = require('../anyyolk')
 class anyyolk.CreditsScene extends Backbone.View
 
   className   : "credits_scene"
-  template    : _.template($("#_credits").html())
   sceneName   : "credits"
   events:
     animationend        : "cleanUp"
@@ -34,7 +33,8 @@ class anyyolk.CreditsScene extends Backbone.View
   render: =>
 
     # render view
-    @$el.html @template()
+#    @$el.html @template()
+    @$el.html anyyolk.JST._credits()
 
     # Add scene to the stage
     $("#stage").append @$el

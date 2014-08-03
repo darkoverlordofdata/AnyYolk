@@ -7,10 +7,6 @@ anyyolk = require('../anyyolk')
 class anyyolk.Stage extends Backbone.View
 
   el              : "#stage"
-  tileTemplate    : _.template($("#_tile_pair").html())
-  treeTemplate    : _.template($("#_tree").html())
-  sunTemplate     : _.template($("#_sun").html())
-  cloudTemplate   : _.template($("#_cloud").html())
 
 
   # The render function delegates to a render function for each "element" 
@@ -25,13 +21,13 @@ class anyyolk.Stage extends Backbone.View
   # Render the ground, simply an image 
   renderTiles: =>
     @$(".tile").remove()
-    @$el.append @tileTemplate()
+    @$el.append anyyolk.JST._tile_pair()
 
 
   # Render the sun, simply an image with a CSS keyframe 
   renderSun: =>
     @$(".sun").remove()
-    @$el.append @sunTemplate()
+    @$el.append anyyolk.JST._sun()
 
 
   # Render the trees, amount, position and image randomized based on width 
@@ -41,11 +37,11 @@ class anyyolk.Stage extends Backbone.View
 
     # for small screens we place two trees manually
     if numTrees <= 2
-      @$el.append @treeTemplate
+      @$el.append anyyolk.JST._tree
         treeNum     : 3
         leftValue   : -100
       
-      @$el.append @treeTemplate
+      @$el.append anyyolk.JST._tree
         treeNum     : 1
         leftValue   : 120
       
@@ -54,7 +50,7 @@ class anyyolk.Stage extends Backbone.View
 
       while i < numTrees
         left = Math.random() * (200) + i * 200
-        @$el.append @treeTemplate # -1 for treeNum tells the template to randomize
+        @$el.append anyyolk.JST._tree # -1 for treeNum tells the template to randomize
           treeNum     : -1
           leftValue   : left - 300
         
@@ -68,15 +64,11 @@ class anyyolk.Stage extends Backbone.View
     i = 0
 
     while i < numClouds
-      top = Math.random() * 50
-      delay = Math.random() * 8 - 4 + (10 * i) # each cloud is spaced apart by 6-14s
-      speed = 20 # in px/s
-      dir = (if Math.floor(Math.random() * 2) < 1 then "left" else "right")
-      @$el.append @cloudTemplate
+      @$el.append anyyolk.JST._cloud
         bp          : anyyolk.bp
-        delay       : delay
-        direction   : dir
-        duration    : $(window).width() / speed
-        topValue    : top
+        delay       : Math.random() * 8 - 4 + (10 * i)
+        direction   : if Math.floor(Math.random() * 2) < 1 then "left" else "right"
+        duration    : $(window).width() / 20
+        topValue    : Math.random() * 50
       
       i++

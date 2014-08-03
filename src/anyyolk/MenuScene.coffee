@@ -8,7 +8,6 @@ anyyolk = require('../anyyolk')
 class anyyolk.MenuScene extends Backbone.View
 
   className   : "menu_scene"
-  template    : _.template($("#_menu").html())
   sceneName   : "menu" # name used to show/hide scene
   events:
     "animationend .title"         : "cleanUp"
@@ -56,7 +55,7 @@ class anyyolk.MenuScene extends Backbone.View
 
   # Show this scene 
   render: =>
-    @$el.html @template()
+    @$el.html anyyolk.JST._menu()
     $("#stage").append @$el
     this
 

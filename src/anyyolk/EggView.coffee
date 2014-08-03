@@ -8,7 +8,6 @@ class anyyolk.EggView extends Backbone.View
 
   className     : "egg"
   spriteClass   : ".egg_sprite_"
-  eggTemplate   : _.template($("#_egg").html())
   scene         : null # The scene the egg view is on
   events:
     webkitTransitionEnd   : "handleTransitionEnded"
@@ -62,7 +61,7 @@ class anyyolk.EggView extends Backbone.View
 
   # Render the next sprite by re generating the template 
   renderSprites: =>
-    @$el.html @eggTemplate(spriteIndex: @model.get("spriteIndex"))
+    @$el.html anyyolk.JST._egg(spriteIndex: @model.get("spriteIndex"))
 
 
   # Render the breaking state (animation of egg rolling sideways) 

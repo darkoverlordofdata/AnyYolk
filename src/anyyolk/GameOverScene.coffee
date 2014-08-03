@@ -23,7 +23,6 @@ class anyyolk.GameOverScene extends Backbone.View
   ]
 
   className   : "game_over_scene"
-  template    : _.template($("#_game_over").html())
   sceneName   : "game_over"
   submitted   : false
   events:
@@ -117,10 +116,10 @@ class anyyolk.GameOverScene extends Backbone.View
 
   render: =>
     congratsIndex = (if @model.get("level") > GameOverScene.Congrats.length then GameOverScene.Congrats.length - 1 else @model.get("level") - 1)
-    @$el.html @template(
-      score: @model.get("score")
-      congrats: GameOverScene.Congrats[congratsIndex]
-    )
+    @$el.html anyyolk.JST._game_over
+      score     : @model.get("score")
+      congrats  : GameOverScene.Congrats[congratsIndex]
+    
     $("#stage").append @$el
 
   renderRemoveScene: =>

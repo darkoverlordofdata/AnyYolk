@@ -40,33 +40,38 @@ $ -> # Document::ready
   #  Game = initialize: ->
   anyyolk = require('./anyyolk')
   if anyyolk.isSupported()
+    anyyolk.start ->
+    
+    
+      console.log 'START'
+      console.log anyyolk.JST._credits
+      
+      # Create the model
+      model = new anyyolk.GameState()
+
+      # Create the stage
+      new anyyolk.Stage(model: model).render()
+
+      # Create all the scenes
+      new anyyolk.MenuScene(model: model)
+      new anyyolk.GameScene(model: model)
+      new anyyolk.GameOverScene(model: model)
+      new anyyolk.HighscoreScene(model: model)
+      new anyyolk.CreditsScene(model: model)
+
+      # Display the menu
+      model.set "scene", "menu"
+
+      # disable dragging and selecting actions
+      $("#stage").on "dragstart selectstart", "*", (event) ->
+        false
 
 
-    # Create the model
-    model = new anyyolk.GameState()
-
-    # Create the stage
-    new anyyolk.Stage(model: model).render()
-
-    # Create all the scenes
-    new anyyolk.MenuScene(model: model)
-    new anyyolk.GameScene(model: model)
-    new anyyolk.GameOverScene(model: model)
-    new anyyolk.HighscoreScene(model: model)
-    new anyyolk.CreditsScene(model: model)
-
-    # Display the menu
-    model.set "scene", "menu"
-
-    # disable dragging and selecting actions
-    $("#stage").on "dragstart selectstart", "*", (event) ->
-      false
-
-
-    # disable scrolling on smartphones
-    document.ontouchmove = (e) ->
-      e.preventDefault()
+      # disable scrolling on smartphones
+      document.ontouchmove = (e) ->
+        e.preventDefault()
+        
   else
     $("#unsupported").show()
 
-  
+

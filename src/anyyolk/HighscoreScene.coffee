@@ -10,8 +10,6 @@ anyyolk = require('../anyyolk')
 class anyyolk.HighscoreScene extends Backbone.View
 
   className       : "highscore_scene"
-  template        : _.template($("#_highscore").html())
-  scoreTemplate   : _.template($("#_score").html())
   sceneName       : "highscore"
   events:
     animationend          : "cleanUp"
@@ -38,7 +36,7 @@ class anyyolk.HighscoreScene extends Backbone.View
   render: =>
 
     # render view
-    @$el.html @template()
+    @$el.html anyyolk.JST._highscore()
 
     # fetch collection
     @model.get("highscoreCollection").fetch()
@@ -64,10 +62,10 @@ class anyyolk.HighscoreScene extends Backbone.View
     this
 
   renderScore: (score, index) =>
-    @$("#score_table tbody").append @scoreTemplate(
+    @$("#score_table tbody").append anyyolk.JST._score
       score: score
       index: index
-    )
+    
 
   renderRemoveScene: =>
 

@@ -1,6 +1,38 @@
 
 module.exports = class anyyolk
 
+
+  @start: ($next) ->
+  
+    anyyolk.JST = {}
+    deferreds = []
+    views = [
+      '_cloud'
+      '_credits'
+      '_egg'
+      '_game_level'
+      '_game_lives'
+      '_game_over'
+      '_game_score'
+      '_highscore'
+      '_menu'
+      '_score'
+      '_sun'
+      '_tile_pair'
+      '_tree'
+    ]
+
+    $.each views, (index, name) =>
+      deferreds.push $.get "views/" + name + ".html", (template) =>
+        anyyolk.JST[name] = _.template(String(template))
+
+    $.when.apply(null, deferreds).done $next
+
+
+
+  @get: (name) ->
+    templates[name]
+    
   # Generates the appropriate css browser prefix
   @bp: ->
     bp = ""
