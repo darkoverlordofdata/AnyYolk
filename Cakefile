@@ -29,10 +29,10 @@ task 'build', 'Build the coffee app', ->
   nfcall exec, 'coffee -o tmp -c -b src'
 
   .then ->
-    nfcall exec, 'browserify --debug tmp/main.js > cloudCode/public/js/app.js'
+    nfcall exec, 'browserify --debug tmp/main.js > cloudCode/public/js/anyyolk.js'
 
   .then ->
-    nfcall exec, 'browserify --debug tmp/main.js | uglifyjs > cloudCode/public/js/app.min.js'
+    nfcall exec, 'browserify tmp/main.js | uglifyjs > cloudCode/public/js/anyyolk.min.js'
 
   .fail ($err) ->
     util.error $err
