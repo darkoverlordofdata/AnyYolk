@@ -7,27 +7,36 @@ module.exports = class anyyolk
     anyyolk.JST = {}
     deferreds = []
     views = [
-      '_cloud'
-      '_credits'
-      '_egg'
-      '_game_level'
-      '_game_lives'
-      '_game_over'
-      '_game_score'
-      '_highscore'
-      '_menu'
-      '_score'
-      '_sun'
-      '_tile_pair'
-      '_tree'
+      'cloud'
+      'credits'
+      'egg'
+      'game_level'
+      'game_lives'
+      'game_over'
+      'game_score'
+      'highscore'
+      'menu'
+      'score'
+      'sun'
+      'tile_pair'
+      'tree'
     ]
 
+#    path = location.pathname.replace('/index.html', '')
+#    console.log 'path = '+path
+#    
+#    $.each views, (index, name) =>
+#      console.log "#{location.origin}#{path}/views/#{name}.html"
+#      deferreds.push $.get "#{location.origin}#{path}/views/#{name}.html", (template) =>
+#        anyyolk.JST[name] = _.template(String(template))
+#
+#    $.when.apply(null, deferreds).done $next
+
     $.each views, (index, name) =>
-      deferreds.push $.get "views/" + name + ".html", (template) =>
+      deferreds.push $.get "views/#{name}.html", (template) =>
         anyyolk.JST[name] = _.template(String(template))
 
     $.when.apply(null, deferreds).done $next
-
 
 
   @get: (name) ->

@@ -116,7 +116,7 @@ class anyyolk.GameOverScene extends Backbone.View
 
   render: =>
     congratsIndex = (if @model.get("level") > GameOverScene.Congrats.length then GameOverScene.Congrats.length - 1 else @model.get("level") - 1)
-    @$el.html anyyolk.JST._game_over
+    @$el.html anyyolk.JST.game_over
       score     : @model.get("score")
       congrats  : GameOverScene.Congrats[congratsIndex]
     

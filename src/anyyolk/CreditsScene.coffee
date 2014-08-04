@@ -34,7 +34,7 @@ class anyyolk.CreditsScene extends Backbone.View
 
     # render view
 #    @$el.html @template()
-    @$el.html anyyolk.JST._credits()
+    @$el.html anyyolk.JST.credits()
 
     # Add scene to the stage
     $("#stage").append @$el

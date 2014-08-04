@@ -21,13 +21,13 @@ class anyyolk.Stage extends Backbone.View
   # Render the ground, simply an image 
   renderTiles: =>
     @$(".tile").remove()
-    @$el.append anyyolk.JST._tile_pair()
+    @$el.append anyyolk.JST.tile_pair()
 
 
   # Render the sun, simply an image with a CSS keyframe 
   renderSun: =>
     @$(".sun").remove()
-    @$el.append anyyolk.JST._sun()
+    @$el.append anyyolk.JST.sun()
 
 
   # Render the trees, amount, position and image randomized based on width 
@@ -37,11 +37,11 @@ class anyyolk.Stage extends Backbone.View
 
     # for small screens we place two trees manually
     if numTrees <= 2
-      @$el.append anyyolk.JST._tree
+      @$el.append anyyolk.JST.tree
         treeNum     : 3
         leftValue   : -100
       
-      @$el.append anyyolk.JST._tree
+      @$el.append anyyolk.JST.tree
         treeNum     : 1
         leftValue   : 120
       
@@ -50,7 +50,7 @@ class anyyolk.Stage extends Backbone.View
 
       while i < numTrees
         left = Math.random() * (200) + i * 200
-        @$el.append anyyolk.JST._tree # -1 for treeNum tells the template to randomize
+        @$el.append anyyolk.JST.tree # -1 for treeNum tells the template to randomize
           treeNum     : -1
           leftValue   : left - 300
         
@@ -64,7 +64,7 @@ class anyyolk.Stage extends Backbone.View
     i = 0
 
     while i < numClouds
-      @$el.append anyyolk.JST._cloud
+      @$el.append anyyolk.JST.cloud
         bp          : anyyolk.bp
         delay       : Math.random() * 8 - 4 + (10 * i)
         direction   : if Math.floor(Math.random() * 2) < 1 then "left" else "right"

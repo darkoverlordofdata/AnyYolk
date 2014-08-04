@@ -36,7 +36,7 @@ class anyyolk.HighscoreScene extends Backbone.View
   render: =>
 
     # render view
-    @$el.html anyyolk.JST._highscore()
+    @$el.html anyyolk.JST.highscore()
 
     # fetch collection
     @model.get("highscoreCollection").fetch()
@@ -62,7 +62,7 @@ class anyyolk.HighscoreScene extends Backbone.View
     this
 
   renderScore: (score, index) =>
-    @$("#score_table tbody").append anyyolk.JST._score
+    @$("#score_table tbody").append anyyolk.JST.score
       score: score
       index: index
     

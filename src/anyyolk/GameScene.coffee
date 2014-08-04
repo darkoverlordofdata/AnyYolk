@@ -59,9 +59,9 @@ class anyyolk.GameScene extends Backbone.View
 
   renderLevel: =>
     if @$("#game_level").length > 0
-      @$("#game_level").replaceWith anyyolk.JST._game_level(level: @model.get("level"))
+      @$("#game_level").replaceWith anyyolk.JST.game_level(level: @model.get("level"))
     else
-      @$("#hud").append anyyolk.JST._game_level(level: @model.get("level"))
+      @$("#hud").append anyyolk.JST.game_level(level: @model.get("level"))
     this
 
   renderLevelLabel: =>
@@ -76,16 +76,16 @@ class anyyolk.GameScene extends Backbone.View
 
   renderScore: =>
     if @$("#game_score").length > 0
-      @$("#game_score").replaceWith anyyolk.JST._game_score(score: @model.get("score"))
+      @$("#game_score").replaceWith anyyolk.JST.game_score(score: @model.get("score"))
     else
-      @$("#hud").append anyyolk.JST._game_score(score: @model.get("score"))
+      @$("#hud").append anyyolk.JST.game_score(score: @model.get("score"))
     this
 
   renderLives: =>
     if @$("#game_lives").length > 0
-      @$("#game_lives").replaceWith anyyolk.JST._game_lives(lives: @model.get("lives"))
+      @$("#game_lives").replaceWith anyyolk.JST.game_lives(lives: @model.get("lives"))
     else
-      @$("#hud").append anyyolk.JST._game_lives(lives: @model.get("lives"))
+      @$("#hud").append anyyolk.JST.game_lives(lives: @model.get("lives"))
     this
 
   renderBackButton: =>

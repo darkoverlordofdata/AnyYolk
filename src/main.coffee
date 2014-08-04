@@ -42,10 +42,6 @@ $ -> # Document::ready
   if anyyolk.isSupported()
     anyyolk.start ->
     
-    
-      console.log 'START'
-      console.log anyyolk.JST._credits
-      
       # Create the model
       model = new anyyolk.GameState()
 

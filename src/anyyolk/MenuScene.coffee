@@ -55,7 +55,7 @@ class anyyolk.MenuScene extends Backbone.View
 
   # Show this scene 
   render: =>
-    @$el.html anyyolk.JST._menu()
+    @$el.html anyyolk.JST.menu()
     $("#stage").append @$el
     this
 
