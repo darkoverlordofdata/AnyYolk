@@ -11,6 +11,7 @@ module.exports = class anyyolk
   
     gets = []
     
+    # Templates to load:
     [ 'cloud'
       'credits'
       'egg'
@@ -25,8 +26,8 @@ module.exports = class anyyolk
       'tile_pair'
       'tree'
       ].forEach (name) ->
-      gets.push $.get "views/#{name}.html", (template) ->
-        anyyolk.JST[name] = _.template(String(template))
+        gets.push $.get "views/#{name}.html", (template) ->
+          anyyolk.JST[name] = _.template(String(template))
 
     Q.all(gets).done ->
     
@@ -55,10 +56,6 @@ module.exports = class anyyolk
       document.ontouchmove = (e) ->
         e.preventDefault()
         
-
-
-    
-
 
   @get: (name) ->
     templates[name]

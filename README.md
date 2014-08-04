@@ -4,12 +4,13 @@ AnyYolk is a fun HTML5 game powered by [Parse](https://parse.com). The game uses
 
 ## Modified template structure
 
-1. Moved web page to cloudCode/public
-2. Replaced local libs with http://www.cdnjs.com/
-3. Compile src/main.coffee to cloudCode/public/js/app.min.js
-4. Moved javascript to bottom of index.html
-5. Local node.js server for testing
-6. Published to [gh-page] (http://darkoverlordofdata.github.io/AnyYolk)
+- Moved web page to cloudCode/public
+- Replaced local libs with http://www.cdnjs.com/
+- Compile src/main.coffee to cloudCode/public/js/app.min.js
+- Moved javascript to bottom of index.html
+- Local node.js server for testing
+- Async load templates
+- Published to [gh-page] (http://darkoverlordofdata.github.io/AnyYolk)
 
 ## Setup
 
