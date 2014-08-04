@@ -32,41 +32,11 @@ do (d = document, debug = false) ->
   ref.parentNode.insertBefore js, ref
 
 
-$ -> # Document::ready
+$ -> # Start Game
   
-  # == Entry Point ==
-  #   * This is the main entry point to the game, it
-  #   * initialializes all necessary elements to run the game 
-  #  Game = initialize: ->
   anyyolk = require('./anyyolk')
   if anyyolk.isSupported()
-    anyyolk.start ->
-    
-      # Create the model
-      model = new anyyolk.GameState()
-
-      # Create the stage
-      new anyyolk.Stage(model: model).render()
-
-      # Create all the scenes
-      new anyyolk.MenuScene(model: model)
-      new anyyolk.GameScene(model: model)
-      new anyyolk.GameOverScene(model: model)
-      new anyyolk.HighscoreScene(model: model)
-      new anyyolk.CreditsScene(model: model)
-
-      # Display the menu
-      model.set "scene", "menu"
-
-      # disable dragging and selecting actions
-      $("#stage").on "dragstart selectstart", "*", (event) ->
-        false
-
-
-      # disable scrolling on smartphones
-      document.ontouchmove = (e) ->
-        e.preventDefault()
-        
+    anyyolk.start(Q, "#stage")
   else
     $("#unsupported").show()
 

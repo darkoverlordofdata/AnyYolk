@@ -56,7 +56,7 @@ class anyyolk.GameOverScene extends Backbone.View
     if Parse.User.current()
       @saveHighScore()
     else
-      Parse.Facebookanyyolk.logIn null,
+      Parse.FacebookUtil.logIn null,
         success: (user) =>
 
           # If it's a new user, let's fetch their name from FB

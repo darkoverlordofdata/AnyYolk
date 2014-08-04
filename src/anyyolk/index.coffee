@@ -1,13 +1,17 @@
-
 module.exports = class anyyolk
 
 
-  @start: ($next) ->
+  @JST: {} # JavaScript Templates
   
-    anyyolk.JST = {}
-    deferreds = []
-    views = [
-      'cloud'
+  # == Entry Point ==
+  #   * This is the main entry point to the game, it
+  #   * initialializes all necessary elements to run the game 
+  # 
+  @start: (Q, id) ->
+  
+    gets = []
+    
+    [ 'cloud'
       'credits'
       'egg'
       'game_level'
@@ -20,23 +24,40 @@ module.exports = class anyyolk
       'sun'
       'tile_pair'
       'tree'
-    ]
-
-#    path = location.pathname.replace('/index.html', '')
-#    console.log 'path = '+path
-#    
-#    $.each views, (index, name) =>
-#      console.log "#{location.origin}#{path}/views/#{name}.html"
-#      deferreds.push $.get "#{location.origin}#{path}/views/#{name}.html", (template) =>
-#        anyyolk.JST[name] = _.template(String(template))
-#
-#    $.when.apply(null, deferreds).done $next
-
-    $.each views, (index, name) =>
-      deferreds.push $.get "views/#{name}.html", (template) =>
+      ].forEach (name) ->
+      gets.push $.get "views/#{name}.html", (template) ->
         anyyolk.JST[name] = _.template(String(template))
 
-    $.when.apply(null, deferreds).done $next
+    Q.all(gets).done ->
+    
+      # Create the model
+      model = new anyyolk.GameState()
+
+      # Create the stage
+      new anyyolk.Stage(model: model).render()
+
+      # Create all the scenes
+      new anyyolk.MenuScene(model: model)
+      new anyyolk.GameScene(model: model)
+      new anyyolk.GameOverScene(model: model)
+      new anyyolk.HighscoreScene(model: model)
+      new anyyolk.CreditsScene(model: model)
+
+      # Display the menu
+      model.set "scene", "menu"
+
+      # disable dragging and selecting actions
+      $(id).on "dragstart selectstart", "*", (event) ->
+        false
+
+
+      # disable scrolling on smartphones
+      document.ontouchmove = (e) ->
+        e.preventDefault()
+        
+
+
+    
 
 
   @get: (name) ->
@@ -45,13 +66,18 @@ module.exports = class anyyolk
   # Generates the appropriate css browser prefix
   @bp: ->
     bp = ""
-    if $.browser.webkit
-      bp = "-webkit-"
-    else bp = "-moz-"  if $.browser.mozilla
+    bp = "-webkit-"
+    if $.browser?
+      if $.browser.webkit
+        bp = "-webkit-"
+      else bp = "-moz-"  if $.browser.mozilla
+    
     bp
 
   @isSupported: ->
-    not ($.browser.msie and parseInt($.browser.version) < 10)
+    if $.browser?
+      not ($.browser.msie and parseInt($.browser.version) < 10)
+    else true
 
 
   # Executes the function on the next tick. This means

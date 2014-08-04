@@ -5,7 +5,7 @@
 anyyolk = require('../anyyolk')
 #
 class anyyolk.EggModel extends Backbone.Model
-#module.exports = class EggModel extends Backbone.Model
+
   # The number of sprites for eggs
   @NumSprites = 5
 
